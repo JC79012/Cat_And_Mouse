@@ -1,4 +1,4 @@
-#Maite Flores, Christina Torres, Ferdi Lesporis 
+#Maite Flores, Christina Torres, Ferdi Lesporis
 
 import numpy as np
 epsilon = 0.7
@@ -15,7 +15,6 @@ class MouseAi() :
         self.epsilon = epsilon
         self.learning_rate = learning_rate
         self.discount = discount
-        # self.final_reward = 0
 
     def calculate_qval(self, old_x, old_y, action, reward, new_x, new_y):
         old_q_val = self.q_vals[old_x, old_y, action]
