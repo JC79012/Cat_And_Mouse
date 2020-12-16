@@ -31,7 +31,7 @@ class CatAndMouse():
                         is_mouse = False
                         cat_action = self.maze.get_next_action(is_mouse)
                     
-                        cat_old_x, cat_old_y, cat_mode = self.maze.state
+                        cat_old_x, cat_old_y, cat_mode = self.maze.cat.state
                         # Apply action, get reward and new envstate
                         cat_envstate, cat_reward, cat_game_status = self.maze.moves(is_mouse, cat_action)
                         self.maze.cat.actions.append(cat_action)
@@ -115,7 +115,7 @@ class CatAndMouse():
                         is_mouse = False
                         cat_action = self.maze.get_next_action(is_mouse)
                     
-                        cat_old_x, cat_old_y, cat_mode = self.maze.mouse.state
+                        cat_old_x, cat_old_y, cat_mode = self.maze.cat.state
                         # Apply action, get reward and new envstate
                         cat_envstate, cat_reward, cat_game_status = self.maze.moves(is_mouse, cat_action)
                         self.maze.cat.actions.append(cat_action)
@@ -332,7 +332,7 @@ class CatAndMouse():
                     cat_action = self.maze.nStepCat(steps)
                     self.maze.cat.actions.append(cat_action)
                 
-                    cat_old_x, cat_old_y, cat_mode =self.maze.mouse.state
+                    cat_old_x, cat_old_y, cat_mode =self.maze.cat.state
                     # Apply action, get reward and new envstate
                     cat_envstate, cat_reward, cat_game_status = self.maze.moves(is_mouse, cat_action)
                     cat_new_x, cat_new_y, cat_mode = self.maze.cat.state
@@ -386,7 +386,7 @@ class CatAndMouse():
                     if not cat_valid_actions: break
                     is_mouse = False
                 
-                    cat_old_x, cat_old_y, cat_mode =self.maze.mouse.state
+                    cat_old_x, cat_old_y, cat_mode =self.maze.cat.state
 
                     cat_action = self.maze.window.checkKey()
                 
