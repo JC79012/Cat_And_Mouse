@@ -1,5 +1,4 @@
 #Maite Flores, Christina Torres, Ferdi Lesporis 
-
 import numpy as np
 
 
@@ -8,11 +7,10 @@ class CatAi() :
         self.q_vals = np.zeros((row_size+1, col_size+1, 4))
         self.visited_square = []
         self.actions = []
-        self.state = (0,col_size-1, 'start')
-        self.epsilon = 0.7 
+        self.state = None
+        self.epsilon = 0.5
         self.learning_rate = 0.7
         self.discount = 0.9
-        #self.final_reward = 0
 
     def calculate_qval(self, old_x, old_y, action, reward, new_x, new_y):
         old_q_val = self.q_vals[old_x, old_y, action]
@@ -44,7 +42,7 @@ class CatAi() :
             final_reward -= minus_rate
         #gets reward
     def reward(self, state, min_reward, row_size, col_size):
-        runner_xcor, runner_ycor, mode = self.state
+        runner_xcor, runner_ycor, mode = state
         new_xcor = row_size-1
         new_ycor = col_size-1
         if mode == 'barrier':
@@ -57,5 +55,5 @@ class CatAi() :
             return -0.1
         if mode == 'stop':
             return -0.35
-        # if mode == 'eating':
-        #     return 10.00
+        if mode == 'eating':
+            return 10.00
